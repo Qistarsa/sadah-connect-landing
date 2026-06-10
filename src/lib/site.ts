@@ -1,8 +1,8 @@
 /** External links + nav config. Replace the app URLs with the real domains. */
 export const SITE = {
-  appUrl: 'https://connect.sadah.io/',
-  login: 'https://connect.sadah.io/login',
-  signup: 'https://connect.sadah.io/onboarding',
+  appUrl: 'https://portal.sadah.io/',
+  login: 'https://portal.sadah.io/login',
+  signup: 'https://portal.sadah.io/onboarding',
   whatsapp: 'https://wa.me/966500000000',
 } as const;
 

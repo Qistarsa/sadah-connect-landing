@@ -1,6 +1,6 @@
 import { Nav } from '@/components/nav';
 import { Hero } from '@/components/hero/hero';
-import { Trust } from '@/components/sections/trust';
+// import { Trust } from '@/components/sections/trust';
 import { Statement } from '@/components/sections/statement';
 import { Showcase } from '@/components/sections/showcase';
 import { AiAgent } from '@/components/sections/ai-agent';
@@ -16,7 +16,7 @@ export default function Page() {
       <Nav />
       <main>
         <Hero />
-        <Trust />
+        {/* <Trust /> */}
         <Statement />
         <Showcase />
         <AiAgent />
