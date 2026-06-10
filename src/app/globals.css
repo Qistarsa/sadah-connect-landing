@@ -1,0 +1,210 @@
+@import 'tailwindcss';
+
+/* ============================================================================
+ * Sadah Connect — Landing. Adopts the sadah.io brand system:
+ * purple/violet primary, deep-navy headings (#210b65), lavender canvas,
+ * Montserrat Arabic, blur-in reveals + smooth scroll. Digits stay Latin.
+ * ========================================================================== */
+
+@theme {
+  /* Primary — purple / violet */
+  --color-primary-50: #f5f3ff;
+  --color-primary-100: #ede9fe;
+  --color-primary-200: #ddd6fe;
+  --color-primary-300: #c4b5fd;
+  --color-primary-400: #a78bfa;
+  --color-primary-500: #8b5cf6;
+  --color-primary-600: #7c3aed;
+  --color-primary-700: #6d28d9;
+  --color-primary-800: #5b21b6;
+  --color-primary-900: #4c1d95;
+
+  /* Secondary — blue */
+  --color-secondary-50: #eff6ff;
+  --color-secondary-100: #dbeafe;
+  --color-secondary-200: #bfdbfe;
+  --color-secondary-300: #93c5fd;
+  --color-secondary-400: #60a5fa;
+  --color-secondary-500: #3b82f6;
+  --color-secondary-600: #2563eb;
+
+  /* Brand navy — headings + dark CTAs */
+  --color-navy: #210b65;
+  --color-indigo: #6366f1;
+
+  /* Surfaces + text */
+  --color-background: #ffffff;
+  --color-surface: #fafafa;
+  --color-foreground: #1f2937;
+  --color-foreground-muted: #6b7280;
+  --color-foreground-subtle: #9ca3af;
+
+  /* Accents */
+  --color-accent-green: #10b981;
+  --color-accent-yellow: #f59e0b;
+  --color-accent-red: #ef4444;
+  --color-whatsapp: #25d366;
+
+  /* Shadows */
+  --shadow-card: 0 4px 20px -2px rgb(139 92 246 / 0.15);
+  --shadow-soft: 0 10px 40px -12px rgb(33 11 101 / 0.18);
+  --shadow-glow: 0 24px 70px -20px rgb(124 58 237 / 0.45);
+
+  /* Radii */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 1.75rem;
+
+  /* Font */
+  --font-sans: var(--font-montserrat-arabic), system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  --gradient-hero: linear-gradient(180deg, #f5f3ff 0%, #ffffff 60%);
+}
+
+* {
+  font-family: var(--font-montserrat-arabic), system-ui, -apple-system, sans-serif !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+[dir='rtl'] {
+  text-align: right;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: var(--color-primary-200);
+  color: var(--color-primary-900);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-300);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-400);
+}
+
+/* ------------------------------------------------------------ utilities -- */
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Navy CTA with the signature offset border that shifts on hover. */
+.button-after {
+  position: relative;
+}
+.button-after::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin-top: 4px;
+  border: 1px solid #210b65;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.button-after:hover::after {
+  border-color: #6d28d9;
+  transform: translateY(2px);
+}
+
+/* Rainbow strip used above the footer. */
+.footer-frame {
+  width: 100%;
+  height: 18px;
+  background: linear-gradient(
+    172deg,
+    #9bb9fd 7%,
+    #c4c4f8 14%,
+    #ffd1f8 70%,
+    #fcd5f6 72%,
+    #ecbaf5 74%,
+    #e2bbfe 80%,
+    #96a5ff 100%
+  );
+}
+
+/* ------------------------------------------------------------- keyframes -- */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+  50% { box-shadow: 0 0 44px rgba(139, 92, 246, 0.55); }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2.4s ease-in-out infinite;
+}
+
+/* Infinite logo marquee. Track is duplicated; shift by half its width. */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 34s linear infinite;
+}
+.marquee-host:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+@keyframes typing-dot {
+  0%, 60%, 100% { opacity: 0.35; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
