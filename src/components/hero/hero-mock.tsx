@@ -36,7 +36,7 @@ const LIST = [
   {
     a: 'م',
     n: 'محمد',
-    m: 'تم استلام الطلب، شكراً',
+    m: 'تم استلام الطلب، شكرا',
     t: 'قبل 12 دقيقة',
     u: 0,
     grad: 'from-blue-400 to-blue-600',
@@ -44,7 +44,7 @@ const LIST = [
   {
     a: 'ر',
     n: 'ريم',
-    m: 'ودّي أعرف أسعار العطور',
+    m: 'ودي أعرف أسعار العطور',
     t: 'قبل 25 دقيقة',
     u: 1,
     grad: 'from-emerald-400 to-emerald-600',
@@ -297,7 +297,7 @@ export function HeroMock() {
                   </span>
                   <div className="rounded-2xl rounded-tl-sm bg-gradient-to-br from-blue-500 to-violet-500 px-3.5 py-2 text-[13px] leading-relaxed text-white shadow-sm">
                     وعليكم السلام 🌟 نعم متوفر بسعر 180 ريال والتوصيل مجاني داخل
-                    الرياض. أُرسل لك رابط الطلب؟
+                    الرياض. أرسل لك رابط الطلب؟
                     <div className="tnum mt-1 flex items-center justify-end gap-1 text-[10px] text-white/70">
                       <CheckCheck
                         size={12}

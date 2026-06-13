@@ -1,11 +1,16 @@
 'use client';
 
 import * as React from 'react';
-import { motion, useScroll, useTransform, type MotionValue } from 'motion/react';
+import {
+  motion,
+  useScroll,
+  useTransform,
+  type MotionValue,
+} from 'motion/react';
 import { Container } from '@/components/ui/container';
 
 const TEXT =
-  'من أوّل رسالة على واتساب، إلى صفقةٍ مكتملة — سادة كونكت يجمع محادثاتك وعملاءك وفريقك في مكانٍ واحد، ويحوّل طريقة عملك بالكامل.';
+  'من أول رسالة على واتساب، إلى صفقة مكتملة — سادة كونكت يجمع محادثاتك وعملاءك وفريقك في مكان واحد، ويحول طريقة عملك بالكامل.';
 
 function Word({
   children,
@@ -38,7 +43,11 @@ export function Statement() {
       <Container size="md">
         <p className="flex flex-wrap justify-center gap-x-2.5 gap-y-1.5 text-center text-2xl font-extrabold leading-[1.7] md:text-[2.4rem] md:leading-[1.55]">
           {words.map((w, i) => (
-            <Word key={i} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]}>
+            <Word
+              key={i}
+              progress={scrollYProgress}
+              range={[i / words.length, (i + 1) / words.length]}
+            >
               {w}
             </Word>
           ))}

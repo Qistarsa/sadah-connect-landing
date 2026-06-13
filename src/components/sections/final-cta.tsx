@@ -27,7 +27,7 @@ export function FinalCta() {
               <span className="underline decoration-white/40 decoration-4 underline-offset-8">بصفقة</span>
             </h2>
             <p className="mx-auto mt-5 max-w-xl leading-relaxed text-white/85 md:text-lg">
-              ابدأ اليوم مجاناً، وفعّل الموظف الذكي خلال دقائق.
+              ابدأ اليوم مجانا، وفعل الموظف الذكي خلال دقائق.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
               <Button
@@ -36,7 +36,7 @@ export function FinalCta() {
                 className="bg-white text-navy hover:bg-white/90"
                 leftIcon={<Rocket className="h-5 w-5" />}
               >
-                ابدأ الآن مجاناً
+                ابدأ الآن مجانا
               </Button>
               <a
                 href={SITE.whatsapp}

@@ -22,18 +22,18 @@ const STEP_MS = [1900, 2300, 1500, 2700, 1900];
 const BULLETS: Array<{ icon: LucideIcon; title: string; desc: string }> = [
   {
     icon: BrainCircuit,
-    title: 'يردّ تلقائياً بأسلوب متجرك',
-    desc: 'درّبه على منتجاتك وسياساتك، فيردّ على عملائك خلال ثوانٍ.',
+    title: 'يرد تلقائيا بأسلوب متجرك',
+    desc: 'دربه على منتجاتك وسياساتك، فيرد على عملائك خلال ثوان.',
   },
   {
     icon: Mic,
     title: 'يفهم الرسائل الصوتية',
-    desc: 'يحوّل المقاطع الصوتية إلى فهمٍ نصّي ليجيب عنها بدقّة.',
+    desc: 'يحول المقاطع الصوتية إلى فهم نصي ليجيب عنها بدقة.',
   },
   {
     icon: Users,
-    title: 'يسلّم المحادثة لفريقك عند الحاجة',
-    desc: 'عندما يكتشف أنّ العميل يريد التحدث مع موظف، يحوّل المحادثة مباشرةً إلى فريقك.',
+    title: 'يسلم المحادثة لفريقك عند الحاجة',
+    desc: 'عندما يكتشف أن العميل يريد التحدث مع موظف، يحول المحادثة مباشرة إلى فريقك.',
   },
 ];
 
@@ -163,11 +163,11 @@ function ChatPanel() {
               >
                 <div className="rounded-2xl rounded-tl-sm bg-gradient-to-br from-blue-500 to-violet-500 px-3.5 py-2.5 text-[13px] leading-relaxed text-white shadow-sm">
                   <span className="mb-1 inline-flex items-center gap-1 text-[10px] font-bold text-white/85">
-                    <Bot size={11} /> ردّ تلقائي · الموظف الذكي
+                    <Bot size={11} /> رد تلقائي · الموظف الذكي
                   </span>
                   <p>
-                    أهلاً وسهلاً 👋 نعم، الجاكيت الأسود متوفر بمقاس M بسعر 180
-                    ريال، والتوصيل مجاني خلال يومين. أُرسل لك رابط الطلب الآن؟
+                    أهلا وسهلا 👋 نعم، الجاكيت الأسود متوفر بمقاس M بسعر 180
+                    ريال، والتوصيل مجاني خلال يومين. أرسل لك رابط الطلب الآن؟
                   </p>
                   <div className="mt-1.5 flex h-4 items-center justify-end gap-1 text-[11px] text-white/85">
                     <AnimatePresence>
@@ -176,7 +176,7 @@ function ChatPanel() {
                           {...bubble}
                           className="inline-flex items-center gap-1"
                         >
-                          أُرسل تلقائياً{' '}
+                          أرسل تلقائيا{' '}
                           <CheckCheck size={13} className="text-blue-200" />
                         </motion.span>
                       )}
@@ -209,11 +209,11 @@ export function AiAgent() {
               الموظف الذكي
             </span>
             <h2 className="text-3xl font-extrabold leading-tight text-navy md:text-4xl">
-              يردّ على عملائك، <span className="gradient-text">تلقائياً</span>
+              يرد على عملائك، <span className="gradient-text">تلقائيا</span>
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-foreground-muted">
-              ذكاءٌ يفهم محادثاتك — حتى الصوتية منها — ويردّ بأسلوب متجرك،
-              ويحوّلها لك عند الحاجة.
+              ذكاء يفهم محادثاتك — حتى الصوتية منها — ويرد بأسلوب متجرك،
+              ويحولها لك عند الحاجة.
             </p>
 
             <div className="mt-8 space-y-4">
@@ -243,7 +243,7 @@ export function AiAgent() {
               href={SITE.signup}
               className="group mt-8 inline-flex items-center gap-1.5 font-bold text-primary-600"
             >
-              فعّل الموظف الذكي مجاناً
+              فعل الموظف الذكي مجانا
               <ArrowLeft
                 size={16}
                 className="transition-transform group-hover:-translate-x-1"

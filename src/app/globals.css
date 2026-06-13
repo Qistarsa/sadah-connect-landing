@@ -56,7 +56,8 @@
   --radius-3xl: 1.75rem;
 
   /* Font */
-  --font-sans: var(--font-montserrat-arabic), system-ui, -apple-system, sans-serif;
+  --font-sans:
+    var(--font-montserrat-arabic), system-ui, -apple-system, sans-serif;
 }
 
 :root {
@@ -65,7 +66,11 @@
 }
 
 * {
-  font-family: var(--font-montserrat-arabic), system-ui, -apple-system, sans-serif !important;
+  font-family:
+    var(--font-montserrat-arabic),
+    system-ui,
+    -apple-system,
+    sans-serif !important;
 }
 
 html {
@@ -123,6 +128,9 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  display: inline-block;
+  padding-block: 0.12em 0.22em;
+  margin-block: -0.12em -0.2em;
 }
 
 .glass {
@@ -143,7 +151,9 @@ body {
   border: 1px solid #210b65;
   border-radius: inherit;
   pointer-events: none;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
 }
 .button-after:hover::after {
   border-color: #6d28d9;
@@ -169,16 +179,26 @@ body {
 /* ------------------------------------------------------------- keyframes -- */
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
-  50% { box-shadow: 0 0 44px rgba(139, 92, 246, 0.55); }
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 44px rgba(139, 92, 246, 0.55);
+  }
 }
 .animate-pulse-glow {
   animation: pulse-glow 2.4s ease-in-out infinite;
@@ -186,7 +206,9 @@ body {
 
 /* Infinite logo marquee. Track is duplicated; shift by half its width. */
 @keyframes marquee {
-  to { transform: translateX(-50%); }
+  to {
+    transform: translateX(-50%);
+  }
 }
 .animate-marquee {
   animation: marquee 34s linear infinite;
@@ -196,13 +218,25 @@ body {
 }
 
 @keyframes typing-dot {
-  0%, 60%, 100% { opacity: 0.35; transform: translateY(0); }
-  30% { opacity: 1; transform: translateY(-3px); }
+  0%,
+  60%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

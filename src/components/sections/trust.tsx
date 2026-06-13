@@ -4,7 +4,7 @@ import { Container } from '@/components/ui/container';
 import { CountUp } from '@/components/ui/count-up';
 
 // Placeholder merchant names — swap for real customer logos.
-const LOGOS = ['متجر النخبة', 'أناقة', 'بيت العطور', 'تِك ستور', 'ركن الهدايا', 'مذاق', 'نُورة', 'بوتيك لمى'];
+const LOGOS = ['متجر النخبة', 'أناقة', 'بيت العطور', 'تك ستور', 'ركن الهدايا', 'مذاق', 'نورة', 'بوتيك لمى'];
 
 export function Trust() {
   return (
@@ -16,7 +16,7 @@ export function Trust() {
               <CountUp to={120} prefix="+" />
             </span>
           </p>
-          <p className="text-foreground-muted">فريقٌ ومتجرٌ انضمّوا إلى سادة كونكت</p>
+          <p className="text-foreground-muted">فريق ومتجر انضموا إلى سادة كونكت</p>
         </div>
 
         <div className="marquee-host mt-10 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
@@ -29,7 +29,7 @@ export function Trust() {
           </div>
         </div>
         <p className="mt-3 text-center text-[11px] text-foreground-subtle">
-          شعارات توضيحية — تُستبدل بشعارات عملائك
+          شعارات توضيحية — تستبدل بشعارات عملائك
         </p>
       </Container>
     </section>

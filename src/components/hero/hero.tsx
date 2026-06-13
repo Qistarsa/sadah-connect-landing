@@ -67,7 +67,7 @@ export function Hero() {
           >
             محادثاتك ومبيعاتك،
             <br />
-            في نظام <span className="gradient-text">ذكي</span>
+            في نظام <span className="gradient-text">واحد ذكي</span>
           </motion.h1>
 
           <motion.p
@@ -75,7 +75,7 @@ export function Hero() {
             className="mt-6 max-w-2xl text-lg leading-relaxed text-foreground-muted md:text-xl"
           >
             سادة كونكت تجمع واتساب، الموظف الذكي، الحملات، الصفقات والتقارير في
-            مكانٍ واحد — لتبيع أكثر، وتردّ أسرع.
+            مكان واحد — لتبيع أكثر، وترد أسرع.
           </motion.p>
 
           <motion.div variants={scaleUp} className="mt-9">
@@ -84,7 +84,7 @@ export function Hero() {
               size="lg"
               leftIcon={<Rocket className="h-5 w-5" />}
             >
-              ابدأ الآن مجاناً
+              ابدأ الآن مجانا
             </Button>
           </motion.div>
 

@@ -39,10 +39,10 @@ export function Footer() {
           <div>
             <BrandMark />
             <p className="mt-4 max-w-xs leading-relaxed text-foreground-muted">
-              من المحادثة إلى الصفقة — واتساب ومبيعاتك في نظامٍ واحد ذكي.
+              من المحادثة إلى الصفقة — واتساب ومبيعاتك في نظام واحد ذكي.
             </p>
             <a href={SITE.signup} className="mt-4 inline-flex font-bold text-primary-600">
-              ابدأ مجاناً ←
+              ابدأ مجانا ←
             </a>
           </div>
           {COLS.map((c) => (
@@ -62,7 +62,7 @@ export function Footer() {
         </div>
         <div className="flex flex-col items-center justify-between gap-3 border-t border-gray-100 py-6 sm:flex-row">
           <p className="tnum text-[12px] text-foreground-subtle">© 2026 سادة كونكت. جميع الحقوق محفوظة.</p>
-          <p className="text-[12px] text-foreground-subtle">صُنع بعناية في السعودية</p>
+          <p className="text-[12px] text-foreground-subtle">صنع بعناية في السعودية</p>
         </div>
       </Container>
     </footer>

@@ -18,7 +18,7 @@ const LEFT: Feature[] = [
   {
     title: 'المنتجات والكتالوج',
     bullets: [
-      'نظّم منتجاتك وأسعارها في كتالوج أنيق.',
+      'نظم منتجاتك وأسعارها في كتالوج أنيق.',
       'شاركها داخل المحادثة بضغطة واحدة.',
     ],
     img: '/features/catalog.png',
@@ -30,7 +30,7 @@ const LEFT: Feature[] = [
     imgPos: 'below',
     bullets: [
       'ردود ووسائط جاهزة بضغطة واحدة.',
-      'وفّر وقت فريقك في الأسئلة المتكررة.',
+      'وفر وقت فريقك في الأسئلة المتكررة.',
     ],
   },
 ];
@@ -49,7 +49,7 @@ const CENTER: Feature[] = [
   {
     title: 'تقارير ولوحات',
     bullets: [
-      'تابع المحادثات والصفقات والفريق لحظياً.',
+      'تابع المحادثات والصفقات والفريق لحظيا.',
       'لوحات وأرقام واضحة لاتخاذ القرار.',
     ],
     img: '/features/reports.png',
@@ -59,7 +59,7 @@ const CENTER: Feature[] = [
     title: 'المهام والتذكيرات',
     img: '/features/tasks.png',
     imgPos: 'side',
-    bullets: ['مهام وتذكيرات لكل صفقة.', 'لا تفوّت أي متابعة مع عملائك.'],
+    bullets: ['مهام وتذكيرات لكل صفقة.', 'لا تفوت أي متابعة مع عملائك.'],
   },
 ];
 
@@ -67,9 +67,9 @@ const RIGHT: Feature[] = [
   {
     title: 'أرقام واتساب متعددة',
     bullets: [
-      'اربط أكثر من رقم في صندوقٍ واحد.',
+      'اربط أكثر من رقم في صندوق واحد.',
       'QR لواتساب ويب أو واتساب API الرسمي.',
-      'وزّع المحادثات على فريقك تلقائياً.',
+      'وزع المحادثات على فريقك تلقائيا.',
     ],
     img: '/features/whatsapp-numbers.png',
     imgPos: 'below',
@@ -77,8 +77,8 @@ const RIGHT: Feature[] = [
   {
     title: 'فهم الرسائل الصوتية',
     bullets: [
-      'الذكاء يحوّل الصوت إلى نصّ.',
-      'يفهم رسائل عملائك ويجيب عنها بدقّة.',
+      'الذكاء يحول الصوت إلى نص.',
+      'يفهم رسائل عملائك ويجيب عنها بدقة.',
     ],
     img: '/features/voice-ai.png',
     imgPos: 'below',
@@ -87,7 +87,7 @@ const RIGHT: Feature[] = [
     title: 'صلاحيات وأدوار',
     bullets: [
       'أدوار وصلاحيات دقيقة لكل موظف.',
-      'تحكّم بما يصل إليه كل عضو في الفريق.',
+      'تحكم بما يصل إليه كل عضو في الفريق.',
     ],
     img: '/features/roles.png',
     imgPos: 'below',
@@ -175,10 +175,10 @@ export function Features() {
         eyebrow="كل ما تحتاجه"
         title={
           <>
-            منصةٌ واحدة بدل <span className="gradient-text">عشر أدوات</span>
+            منصة واحدة بدل <span className="gradient-text">عشر أدوات</span>
           </>
         }
-        description="من أول رسالة إلى إتمام البيع — محادثاتك وعملائك وصفقاتك في مكانٍ واحد."
+        description="من أول رسالة إلى إتمام البيع — محادثاتك وعملائك وصفقاتك في مكان واحد."
       />
       <div className="flex flex-col gap-2 lg:flex-row lg:items-stretch">
         <div className="flex min-w-0 flex-col gap-2 lg:grow-[27] lg:basis-0">

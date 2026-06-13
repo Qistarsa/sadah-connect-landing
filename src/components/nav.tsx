@@ -44,7 +44,7 @@ export function Nav() {
 
           <div className="hidden md:block">
             <Button href={SITE.signup} variant="outline" size="sm" className="rounded-lg border-primary-400 px-5">
-              ابدأ مجاناً
+              ابدأ مجانا
             </Button>
           </div>
 
@@ -81,7 +81,7 @@ export function Nav() {
                   </a>
                 ))}
                 <Button href={SITE.signup} variant="outline" className="mt-2 w-full">
-                  ابدأ مجاناً
+                  ابدأ مجانا
                 </Button>
               </div>
             </Container>

@@ -74,7 +74,7 @@ export function PricingCards({
             >
               سنوي
               <span className="rounded-full border border-primary-200 bg-primary-50 px-2 py-0.5 text-[11px] font-bold text-primary-600">
-                وفّر {yearlyDiscount}%
+                وفر {yearlyDiscount}%
               </span>
             </button>
           </div>
@@ -114,7 +114,7 @@ export function PricingCards({
 
             <div className="mt-5 flex items-end gap-1.5">
               {plan.price[period] === 'custom' ? (
-                <span className="text-3xl font-extrabold text-navy">مخصّص</span>
+                <span className="text-3xl font-extrabold text-navy">مخصص</span>
               ) : (
                 <>
                   <span className="tnum text-4xl font-extrabold text-navy">
@@ -123,7 +123,7 @@ export function PricingCards({
                   {(plan.price[period] as number) > 0 && (
                     <>
                       <span className="mb-1 text-sm text-foreground-muted">ر.س</span>
-                      <span className="mb-1 text-[13px] text-foreground-subtle">/ شهرياً</span>
+                      <span className="mb-1 text-[13px] text-foreground-subtle">/ شهريا</span>
                     </>
                   )}
                 </>

@@ -16,10 +16,10 @@ export async function Pricing() {
         eyebrow="الأسعار"
         title={
           <>
-            خططٌ تنمو <span className="gradient-text">مع متجرك</span>
+            خطط تنمو <span className="gradient-text">مع متجرك</span>
           </>
         }
-        description="ابدأ مجاناً، وطور حين تحتاج. بلا عقود ولا رسوم خفية."
+        description="ابدأ مجانا، وطور حين تحتاج. بلا عقود ولا رسوم خفية."
       />
 
       <PricingCards plans={plans} yearlyDiscount={yearlyDiscount} />
