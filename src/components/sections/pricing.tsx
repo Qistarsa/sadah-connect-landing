@@ -19,7 +19,7 @@ export async function Pricing() {
             خططٌ تنمو <span className="gradient-text">مع متجرك</span>
           </>
         }
-        description="ابدأ مجاناً، وارْقَ حين تحتاج. بلا عقود ولا رسوم خفية."
+        description="ابدأ مجاناً، وطور حين تحتاج. بلا عقود ولا رسوم خفية."
       />
 
       <PricingCards plans={plans} yearlyDiscount={yearlyDiscount} />

@@ -32,8 +32,8 @@ const BULLETS: Array<{ icon: LucideIcon; title: string; desc: string }> = [
   },
   {
     icon: Users,
-    title: 'يحوّلها لك عند الحاجة',
-    desc: 'ضمن ساعات العمل وكلمات التحويل التي تحدّدها، يسلّم المحادثة لفريقك.',
+    title: 'يسلّم المحادثة لفريقك عند الحاجة',
+    desc: 'عندما يكتشف أنّ العميل يريد التحدث مع موظف، يحوّل المحادثة مباشرةً إلى فريقك.',
   },
 ];
 
@@ -176,7 +176,8 @@ function ChatPanel() {
                           {...bubble}
                           className="inline-flex items-center gap-1"
                         >
-                          أُرسل تلقائياً <CheckCheck size={13} className="text-blue-200" />
+                          أُرسل تلقائياً{' '}
+                          <CheckCheck size={13} className="text-blue-200" />
                         </motion.span>
                       )}
                     </AnimatePresence>

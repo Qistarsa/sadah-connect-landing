@@ -178,7 +178,7 @@ export function Features() {
             منصةٌ واحدة بدل <span className="gradient-text">عشر أدوات</span>
           </>
         }
-        description="من أول رسالة إلى إتمام البيع — محادثاتك وعملاؤك وصفقاتك في مكانٍ واحد."
+        description="من أول رسالة إلى إتمام البيع — محادثاتك وعملائك وصفقاتك في مكانٍ واحد."
       />
       <div className="flex flex-col gap-2 lg:flex-row lg:items-stretch">
         <div className="flex min-w-0 flex-col gap-2 lg:grow-[27] lg:basis-0">

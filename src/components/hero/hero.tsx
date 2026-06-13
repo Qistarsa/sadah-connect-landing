@@ -67,24 +67,31 @@ export function Hero() {
           >
             محادثاتك ومبيعاتك،
             <br />
-            في نظام <span className="gradient-text">واحد ذكي</span>
+            في نظام <span className="gradient-text">ذكي</span>
           </motion.h1>
 
           <motion.p
             variants={blurFadeUp}
             className="mt-6 max-w-2xl text-lg leading-relaxed text-foreground-muted md:text-xl"
           >
-            سادة كونكت تجمع واتساب، الموظف الذكي، الحملات، الصفقات والتقارير في مكانٍ واحد —
-            لتبيع أكثر، وتردّ أسرع.
+            سادة كونكت تجمع واتساب، الموظف الذكي، الحملات، الصفقات والتقارير في
+            مكانٍ واحد — لتبيع أكثر، وتردّ أسرع.
           </motion.p>
 
           <motion.div variants={scaleUp} className="mt-9">
-            <Button href={SITE.signup} size="lg" leftIcon={<Rocket className="h-5 w-5" />}>
+            <Button
+              href={SITE.signup}
+              size="lg"
+              leftIcon={<Rocket className="h-5 w-5" />}
+            >
               ابدأ الآن مجاناً
             </Button>
           </motion.div>
 
-          <motion.p variants={blurFadeUp} className="mt-4 text-sm text-foreground-subtle">
+          <motion.p
+            variants={blurFadeUp}
+            className="mt-4 text-sm text-foreground-subtle"
+          >
             بدون بطاقة ائتمان · جاهز خلال دقائق
           </motion.p>
         </motion.div>
