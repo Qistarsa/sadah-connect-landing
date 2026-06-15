@@ -5,8 +5,15 @@ import { cn } from '@/lib/utils/cn';
 export function BrandMark({ className }: { className?: string }) {
   return (
     <span className={cn('inline-flex items-center gap-2', className)}>
-      <Image src="/logo.svg" alt="سادة كونكت" width={92} height={31} priority className="h-7 w-auto" />
-      <span className="text-[15px] font-extrabold text-navy">كونكت</span>
+      <Image
+        src="/logo.png"
+        alt="سادة كونكت"
+        width={92}
+        height={31}
+        priority
+        className="h-7 w-auto"
+      />
+      {/* <span className="text-[15px] font-extrabold text-navy">كونكت</span> */}
     </span>
   );
 }
