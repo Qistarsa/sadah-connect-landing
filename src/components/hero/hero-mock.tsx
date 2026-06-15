@@ -106,8 +106,9 @@ export function HeroMock() {
         </div>
 
         <div className="flex h-[440px]">
-          {/* Far-right nav rail (RTL start) */}
-          <div className="hidden w-14 shrink-0 flex-col items-center gap-3 border-e border-slate-100 bg-slate-50/60 py-4 sm:flex">
+          {/* Far-right nav rail (RTL start) — joins the chat thread at md so the
+              phone view stays a clean full-width inbox below it. */}
+          <div className="hidden w-14 shrink-0 flex-col items-center gap-3 border-e border-slate-100 bg-slate-50/60 py-4 md:flex">
             {[Inbox, Megaphone, BarChart3, Settings].map((Ic, i) => (
               <span
                 key={i}
@@ -123,8 +124,9 @@ export function HeroMock() {
             ))}
           </div>
 
-          {/* Conversations list */}
-          <div className="flex w-[40%] shrink-0 flex-col border-e border-slate-100">
+          {/* Conversations list — full width on phones (it's the only panel
+              shown below md), narrows to 40% once the chat thread appears. */}
+          <div className="flex w-full shrink-0 flex-col md:w-[40%] md:border-e md:border-slate-100">
             <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
               <h2 className="text-sm font-bold text-slate-900">المحادثات</h2>
               <div className="flex items-center gap-0.5 text-slate-400">
