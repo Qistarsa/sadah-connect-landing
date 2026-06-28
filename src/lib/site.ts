@@ -4,6 +4,10 @@ export const SITE = {
   login: 'https://portal.sadah.io/login',
   signup: 'https://portal.sadah.io/onboarding',
   whatsapp: 'https://wa.me/966500000000',
+  // Contact + legal — replace placeholders with the real company values.
+  company: 'سادة كونكت',
+  supportEmail: 'support@sadah.io',
+  privacyEmail: 'info@sadah.io',
 } as const;
 
 /**

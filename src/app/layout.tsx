@@ -19,7 +19,7 @@ const montserratArabic = localFont({
   ],
 });
 
-const SITE_URL = 'https://connect.sadah.sa';
+const SITE_URL = 'https://connect.sadah.io';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
