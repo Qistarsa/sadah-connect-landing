@@ -4,6 +4,9 @@ export const SITE = {
   login: 'https://portal.sadah.io/login',
   signup: 'https://portal.sadah.io/onboarding',
   whatsapp: 'https://wa.me/966535899303',
+  // Companion mobile app — replace with the real store URLs once published.
+  appStore: 'https://apps.apple.com/app/sadah-connect/id6784274557',
+  playStore: 'https://play.google.com/store/apps/details?id=com.sadah.connect',
   // Contact + legal — replace placeholders with the real company values.
   company: 'سادة كونكت',
   supportEmail: 'support@sadah.io',

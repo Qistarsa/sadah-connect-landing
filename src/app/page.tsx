@@ -7,6 +7,7 @@ import { AiAgent } from '@/components/sections/ai-agent';
 import { Features } from '@/components/sections/features';
 import { Pricing } from '@/components/sections/pricing';
 import { Faq } from '@/components/sections/faq';
+import { MobileApp } from '@/components/sections/mobile-app';
 import { FinalCta } from '@/components/sections/final-cta';
 import { Footer } from '@/components/sections/footer';
 
@@ -23,7 +24,8 @@ export default function Page() {
         <Features />
         <Pricing />
         <Faq />
-        <FinalCta />
+        <MobileApp />
+        {/* <FinalCta /> */}
       </main>
       <Footer />
     </>
