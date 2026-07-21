@@ -3,7 +3,7 @@ export const SITE = {
   appUrl: 'https://portal.sadah.io/',
   login: 'https://portal.sadah.io/login',
   signup: 'https://portal.sadah.io/onboarding',
-  whatsapp: 'https://wa.me/966500000000',
+  whatsapp: 'https://wa.me/966535899303',
   // Contact + legal — replace placeholders with the real company values.
   company: 'سادة كونكت',
   supportEmail: 'support@sadah.io',

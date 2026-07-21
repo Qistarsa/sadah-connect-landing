@@ -18,6 +18,8 @@ export interface PlanCard {
   tagline: string;
   /** Per-month price for each billing period; 'custom' → contact-sales tier. */
   price: Record<Period, number | 'custom'>;
+  /** Exact annual total charged on yearly billing; null when no yearly price. */
+  yearlyTotal: number | null;
   cta: string;
   href: string;
   featured: boolean;
@@ -47,7 +49,16 @@ interface WirePlan {
   features: WireFeature[] | null;
   featuredBadge: string | null;
   priceMonthly: string | null;
-  yearlyDiscountPercent: number | null;
+  priceYearly: string | null;
+  contactSalesOnly: boolean;
+}
+
+/** Derived yearly saving (%) versus paying monthly, clamped at 0. */
+function yearlyDiscountPct(p: WirePlan): number {
+  const m = p.priceMonthly != null ? Number(p.priceMonthly) : 0;
+  const y = p.priceYearly != null ? Number(p.priceYearly) : 0;
+  if (m <= 0 || y <= 0) return 0;
+  return Math.max(0, Math.round((1 - y / (m * 12)) * 100));
 }
 
 interface Envelope {
@@ -58,20 +69,25 @@ interface Envelope {
 
 function mapPlan(p: WirePlan): PlanCard {
   const monthly = p.priceMonthly != null ? Number(p.priceMonthly) : null;
-  // A paid plan with no price is the enterprise "contact us" tier.
-  const isCustom = p.kind === 'paid' && monthly == null;
+  // Enterprise "contact us" tier: the explicit flag, or (legacy) a paid plan
+  // left without a price.
+  const isCustom = p.contactSalesOnly || (p.kind === 'paid' && monthly == null);
   const isFree = p.kind === 'free' || monthly === 0;
 
   let price: Record<Period, number | 'custom'>;
+  let yearlyTotalOut: number | null = null;
   if (isCustom) {
     price = { monthly: 'custom', yearly: 'custom' };
   } else {
     const m = monthly ?? 0;
-    const yearly =
-      m > 0 && p.yearlyDiscountPercent && p.yearlyDiscountPercent > 0
-        ? Math.round(m * (1 - p.yearlyDiscountPercent / 100))
-        : m;
+    // Card prices are per-month; the yearly figure is the exact annual total
+    // spread across 12 months. Falls back to the monthly price when no yearly
+    // price is configured.
+    const yearlyTotal = p.priceYearly != null ? Number(p.priceYearly) : null;
+    const hasYearly = m > 0 && !!yearlyTotal && yearlyTotal > 0;
+    const yearly = hasYearly ? Math.round(yearlyTotal! / 12) : m;
     price = { monthly: m, yearly };
+    if (hasYearly) yearlyTotalOut = yearlyTotal!;
   }
 
   return {
@@ -79,7 +95,8 @@ function mapPlan(p: WirePlan): PlanCard {
     name: p.nameAr,
     tagline: p.taglineAr ?? '',
     price,
-    cta: isCustom ? 'تواصل معنا' : isFree ? 'ابدأ الآن' : 'ابدأ مجانا',
+    yearlyTotal: yearlyTotalOut,
+    cta: isCustom ? 'تواصل معنا' : !isFree ? 'ابدأ الآن' : 'ابدأ مجانا',
     href: isCustom ? SITE.whatsapp : SITE.signup,
     featured: Boolean(p.featuredBadge),
     badge: p.featuredBadge,
@@ -98,6 +115,7 @@ const FALLBACK: PricingData = {
       name: 'احترافي',
       tagline: 'للمتاجر النامية',
       price: { monthly: 249, yearly: 199 },
+      yearlyTotal: 2388,
       cta: 'ابدأ مجانا',
       href: SITE.signup,
       featured: true,
@@ -117,12 +135,18 @@ const FALLBACK: PricingData = {
       name: 'أعمال',
       tagline: 'للفرق الكبيرة',
       price: { monthly: 'custom', yearly: 'custom' },
+      yearlyTotal: null,
       cta: 'تواصل معنا',
       href: SITE.whatsapp,
       featured: false,
       badge: null,
       icon: 'sparkles',
-      features: ['كل مزايا الاحترافي', 'أعضاء وصلاحيات غير محدودة', 'وصول API', 'دعم مخصص'],
+      features: [
+        'كل مزايا الاحترافي',
+        'أعضاء وصلاحيات غير محدودة',
+        'وصول API',
+        'دعم مخصص',
+      ],
     },
   ],
 };
@@ -145,7 +169,7 @@ export async function fetchPricing(): Promise<PricingData> {
     return {
       plans: rows.map(mapPlan),
       yearlyDiscount: rows.reduce(
-        (max, r) => Math.max(max, r.yearlyDiscountPercent ?? 0),
+        (max, r) => Math.max(max, yearlyDiscountPct(r)),
         0,
       ),
     };

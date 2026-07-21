@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { motion } from 'motion/react';
-import { Check, Trophy, Gem, Sparkles } from 'lucide-react';
+import { Check, Trophy, Gem, Sparkles, SaudiRiyal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils/cn';
 import { ease } from '@/lib/motion';
@@ -38,7 +38,9 @@ export function PricingCards({
   yearlyDiscount: number;
 }) {
   const hasYearly = yearlyDiscount > 0;
-  const [period, setPeriod] = React.useState<Period>(hasYearly ? 'yearly' : 'monthly');
+  const [period, setPeriod] = React.useState<Period>(
+    hasYearly ? 'yearly' : 'monthly',
+  );
 
   return (
     <>
@@ -110,7 +112,9 @@ export function PricingCards({
               {ICONS[plan.icon]}
               <span className="text-lg font-bold">{plan.name}</span>
             </div>
-            <p className="mt-1 text-[13px] text-foreground-muted">{plan.tagline}</p>
+            <p className="mt-1 text-[13px] text-foreground-muted">
+              {plan.tagline}
+            </p>
 
             <div className="mt-5 flex items-end gap-1.5">
               {plan.price[period] === 'custom' ? (
@@ -122,13 +126,29 @@ export function PricingCards({
                   </span>
                   {(plan.price[period] as number) > 0 && (
                     <>
-                      <span className="mb-1 text-sm text-foreground-muted">ر.س</span>
-                      <span className="mb-1 text-[13px] text-foreground-subtle">/ شهريا</span>
+                      <SaudiRiyal
+                        className="mb-2 h-4 w-4 text-foreground-muted"
+                        aria-label="ريال سعودي"
+                      />
+                      <span className="mb-1 text-[13px] text-foreground-subtle">
+                        / شهريا
+                      </span>
                     </>
                   )}
                 </>
               )}
             </div>
+
+            {period === 'yearly' && plan.yearlyTotal != null && (
+              <p className="mt-1.5 text-[12px] text-foreground-subtle">
+                {/* يُدفع{' '} */}
+                <span className="tnum inline-flex items-center gap-0.5 align-middle font-semibold text-foreground-muted">
+                  {new Intl.NumberFormat('en-US').format(plan.yearlyTotal)}
+                  <SaudiRiyal className="h-3 w-3" aria-label="ريال سعودي" />
+                </span>{' '}
+                سنويًا
+              </p>
+            )}
 
             <Button
               href={plan.href}
