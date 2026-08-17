@@ -24,3 +24,43 @@ const ARABIC_INDIC = '٠١٢٣٤٥٦٧٨٩';
 export function toLatinDigits(input: string): string {
   return input.replace(/[٠-٩]/g, (d) => String(ARABIC_INDIC.indexOf(d)));
 }
+
+/**
+ * Absolute dates render in ENGLISH — English month name plus Latin digits —
+ * even inside Arabic copy: `17 August 2026`. Only relative phrases stay
+ * Arabic, and even there the digits are Latin.
+ */
+const EN_MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+export function formatArticleDate(
+  input: string | Date | null | undefined,
+): string {
+  if (!input) return '';
+  const date = input instanceof Date ? input : new Date(input);
+  if (Number.isNaN(date.getTime())) return '';
+  // UTC parts: an article published at 23:00 Riyadh must not read as the day
+  // before for a reader in a western timezone.
+  return `${date.getUTCDate()} ${EN_MONTHS[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+}
+
+/** `2026-08-17` — the machine-readable half of a <time> element. */
+export function toDateAttribute(
+  input: string | Date | null | undefined,
+): string | undefined {
+  if (!input) return undefined;
+  const date = input instanceof Date ? input : new Date(input);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
+}

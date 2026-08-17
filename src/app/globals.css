@@ -242,3 +242,187 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============================================================================
+ * Article body — the sanitised HTML rendered by `ArticleBody`.
+ *
+ * Styled explicitly rather than with @tailwindcss/typography, which is not
+ * installed in this project (the legal pages set the same precedent). Every
+ * selector here matches a tag the backend's sanitiser allowlist can emit —
+ * nothing else can reach the page.
+ * ========================================================================== */
+
+.article-body > * + * {
+  margin-block-start: 1.15em;
+}
+
+.article-body h2 {
+  margin-block-start: 2em;
+  scroll-margin-top: 6rem; /* clears the sticky header on a TOC jump */
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: var(--color-navy);
+}
+
+.article-body h3 {
+  margin-block-start: 1.75em;
+  scroll-margin-top: 6rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.article-body h4 {
+  margin-block-start: 1.5em;
+  scroll-margin-top: 6rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.article-body a {
+  color: var(--color-primary-600);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.15s;
+}
+.article-body a:hover {
+  color: var(--color-primary-700);
+}
+
+.article-body ul,
+.article-body ol {
+  padding-inline-start: 1.5rem;
+}
+.article-body ul {
+  list-style: disc;
+}
+.article-body ol {
+  list-style: decimal;
+}
+.article-body li::marker {
+  color: var(--color-primary-400);
+}
+.article-body li + li {
+  margin-block-start: 0.4em;
+}
+
+/* RTL-correct: `border-inline-end` puts the rule on the right in Arabic. */
+.article-body blockquote {
+  border-inline-end: 4px solid var(--color-primary-400);
+  background: var(--color-primary-50);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  color: var(--color-foreground-muted);
+}
+.article-body blockquote > * + * {
+  margin-block-start: 0.75em;
+}
+
+.article-body code {
+  background: rgb(33 11 101 / 0.04);
+  border-radius: 0.3rem;
+  padding: 0.12em 0.4em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+/* Snippets are LTR even inside an RTL article — mirrored code is unreadable. */
+.article-body pre {
+  direction: ltr;
+  text-align: left;
+  background: rgb(33 11 101 / 0.04);
+  border-radius: 1rem;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  line-height: 1.7;
+}
+.article-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.article-body img {
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+  max-width: 100%;
+  height: auto;
+}
+
+.article-body figure {
+  margin-block: 1.75em;
+}
+.article-body figcaption {
+  margin-block-start: 0.6em;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-foreground-subtle);
+}
+
+.article-body hr {
+  border: 0;
+  border-top: 1px solid rgb(0 0 0 / 0.08);
+  margin-block: 2.5em;
+}
+
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  display: block;
+  overflow-x: auto;
+}
+.article-body th,
+.article-body td {
+  border: 1px solid rgb(0 0 0 / 0.08);
+  padding: 0.6rem 0.85rem;
+  text-align: start;
+}
+.article-body th {
+  background: var(--color-primary-50);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+/* Video embeds. The wrapper reserves the box before the iframe loads, which is
+   what keeps CLS under budget. */
+.article-body .embed,
+.article-body div[data-youtube-video] {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.article-body iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Callouts. Never `surface-muted` — that token isn't defined in this system. */
+.article-body .callout {
+  border-radius: 1rem;
+  padding: 1rem 1.15rem;
+  border-inline-start: 3px solid transparent;
+}
+.article-body .callout > * + * {
+  margin-block-start: 0.6em;
+}
+.article-body .callout-info {
+  background: var(--color-primary-50);
+  border-inline-start-color: var(--color-primary-500);
+}
+.article-body .callout-tip {
+  background: #ecfdf5;
+  border-inline-start-color: var(--color-accent-green);
+}
+.article-body .callout-warning {
+  background: #fffbeb;
+  border-inline-start-color: var(--color-accent-yellow);
+}

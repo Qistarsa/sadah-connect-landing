@@ -19,10 +19,19 @@ const montserratArabic = localFont({
   ],
 });
 
-const SITE_URL = 'https://connect.sadah.io';
+import Script from 'next/script';
+import { SITE_URL } from '@/lib/site';
+
+/** Search Console ownership. Leave unset until the property is created. */
+const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
+/** GA4. Unset on Preview so only production reports. */
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  ...(GSC_VERIFICATION
+    ? { verification: { google: GSC_VERIFICATION } }
+    : {}),
   title: 'سادة كونكت — من المحادثة إلى الصفقة',
   description:
     'منصة سادة كونكت تجمع محادثات واتساب ومبيعاتك في نظام واحد، مع موظف ذكي يرد تلقائيا، حملات، صفقات، وتقارير. ابدأ مجانا.',
@@ -51,6 +60,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SmoothScroll />
         <Providers>{children}</Providers>
         <WhatsAppFloatingButton />
+
+        {/* GA4 — gated on the env var so preview and dev deployments send
+            nothing. Link the property to Search Console: that is what turns
+            "1,200 sessions" into "1,200 sessions from these 40 queries". */}
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );

@@ -22,8 +22,20 @@ export const SITE = {
 export const API_BASE =
   process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000';
 
+/**
+ * Public origin of this site. Used for canonicals, JSON-LD and sitemap URLs,
+ * so a trailing-slash or `www` mismatch here silently breaks canonicalisation.
+ */
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://connect.sadah.io';
+
+/**
+ * `#hash` entries only resolve on `/`; the nav prefixes them with `/` when the
+ * reader is on a sub-page. `/blog` is a real route and needs no prefixing.
+ */
 export const NAV_LINKS = [
   { href: '#features', label: 'المميزات' },
   { href: '#how', label: 'كيف يعمل' },
   { href: '#pricing', label: 'الأسعار' },
+  { href: '/blog', label: 'المدونة' },
 ] as const;

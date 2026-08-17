@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { BrandMark } from './brand-mark';
 import { Button } from './ui/button';
@@ -13,10 +14,17 @@ const LINKS = [
   { href: '#ai', label: 'الموظف الذكي' },
   { href: '#pricing', label: 'الأسعار' },
   { href: '#faq', label: 'الأسئلة' },
+  { href: '/blog', label: 'المدونة' },
 ];
 
 export function Nav() {
   const [open, setOpen] = React.useState(false);
+  const pathname = usePathname();
+
+  // A bare `#pricing` scrolls nowhere on a sub-page — off the home page the
+  // anchors have to be absolute.
+  const hrefFor = (href: string) =>
+    href.startsWith('#') && pathname !== '/' ? `/${href}` : href;
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
@@ -34,7 +42,7 @@ export function Nav() {
             {LINKS.map((l) => (
               <a
                 key={l.href}
-                href={l.href}
+                href={hrefFor(l.href)}
                 className="text-sm font-medium text-gray-700 transition-colors hover:text-primary-600"
               >
                 {l.label}
@@ -73,7 +81,7 @@ export function Nav() {
                 {LINKS.map((l) => (
                   <a
                     key={l.href}
-                    href={l.href}
+                    href={hrefFor(l.href)}
                     onClick={() => setOpen(false)}
                     className="block py-1.5 font-medium text-gray-700"
                   >

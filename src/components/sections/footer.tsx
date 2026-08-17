@@ -1,5 +1,6 @@
 import { BrandMark } from '@/components/brand-mark';
 import { Container } from '@/components/ui/container';
+import { getCategories } from '@/lib/blog';
 import { SITE } from '@/lib/site';
 
 const COLS = [
@@ -31,12 +32,33 @@ const COLS = [
   },
 ];
 
-export function Footer() {
+/**
+ * Async because the blog column is data-driven: permanent internal links from
+ * every page on the site to every category hub, which is exactly the link
+ * structure crawlers reward. Fetch is cached (1h, `blog:index` tag) and
+ * degrades to an empty list, so an outage just drops the column.
+ */
+export async function Footer() {
+  const categories = await getCategories();
+  const blogColumn = {
+    h: 'المدونة',
+    links: [
+      { l: 'كل المقالات', h: '/blog' },
+      ...categories
+        .slice(0, 4)
+        .map((category) => ({
+          l: category.name,
+          h: `/blog/category/${category.slug}`,
+        })),
+    ],
+  };
+  const columns = [...COLS, blogColumn];
+
   return (
     <footer className="bg-white">
       <div className="footer-frame" />
       <Container>
-        <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr_1fr]">
           <div>
             <BrandMark />
             <p className="mt-4 max-w-xs leading-relaxed text-foreground-muted">
@@ -46,7 +68,7 @@ export function Footer() {
               ابدأ مجانا ←
             </a>
           </div>
-          {COLS.map((c) => (
+          {columns.map((c) => (
             <div key={c.h}>
               <h4 className="font-bold text-navy">{c.h}</h4>
               <ul className="mt-3 space-y-2.5">
