@@ -1,5 +1,6 @@
 'use client';
 
+import { Fragment } from 'react';
 import {
   Inbox,
   Megaphone,
@@ -8,8 +9,14 @@ import {
   Clock,
   Check,
   CheckCheck,
+  CircleCheck,
   Eye,
   ExternalLink,
+  FileText,
+  Headset,
+  Receipt,
+  Star,
+  Store,
 } from 'lucide-react';
 import { FeatureBlock } from './feature-block';
 import { cn } from '@/lib/utils/cn';
@@ -214,7 +221,11 @@ function CampaignMock() {
         <div className="max-w-[92%] overflow-hidden rounded-2xl rounded-tr-sm bg-white shadow-sm">
           <div className="px-3.5 pt-2.5 pb-1.5">
             <p className="text-[13px] font-semibold leading-snug text-slate-900">
-              🎉 عرض خاص!
+              🎉 عرض خاص يا{' '}
+              <span className="rounded bg-violet-100 px-1 text-violet-700">
+                نورة
+              </span>
+              !
             </p>
             <p className="mt-1 text-[12.5px] leading-relaxed text-slate-600">
               خصم 20% على جميع المنتجات حتى نهاية الأسبوع. تسوق الآن من متجرنا.
@@ -228,7 +239,7 @@ function CampaignMock() {
           </div>
         </div>
         <p className="mt-2 text-[11px] text-slate-400">
-          قالب واتساب معتمد · نص + زر
+          قالب واتساب معتمد · اسم العميل يضاف تلقائيا
         </p>
       </div>
 
@@ -328,6 +339,201 @@ function DealsMock() {
   );
 }
 
+function InvoiceMock() {
+  const lines = [
+    { n: 'جاكيت أسود', q: 1, p: '180.00' },
+    { n: 'وشاح صوف', q: 2, p: '120.00' },
+  ];
+  // Mirrors the real order status flow; index 2 (مدفوع) is the current step.
+  const steps = ['مسودة', 'بانتظار الدفع', 'مدفوع', 'مكتمل'];
+  const current = 2;
+  return (
+    <MockShell label="طلب #1042">
+      <div className="flex items-center gap-1">
+        {steps.map((s, i) => (
+          <Fragment key={s}>
+            <span
+              className={cn(
+                'inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold',
+                i < current && 'bg-slate-100 text-slate-500',
+                i === current &&
+                  'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-100',
+                i > current && 'text-slate-300 ring-1 ring-slate-100',
+              )}
+            >
+              {i <= current && <Check size={10} strokeWidth={3} />}
+              {s}
+            </span>
+            {i < steps.length - 1 && (
+              <span className="h-px min-w-1 flex-1 bg-slate-200" />
+            )}
+          </Fragment>
+        ))}
+      </div>
+
+      <div className="mt-3 rounded-xl border border-slate-100 p-3">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex items-center gap-2.5">
+            <span className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-violet-400 to-violet-600 text-white">
+              <Store size={17} />
+            </span>
+            <div>
+              <p className="text-[13px] font-bold text-slate-900">
+                متجر الأناقة
+              </p>
+              <p className="text-[11px] text-slate-400">
+                فاتورة{' '}
+                <span dir="ltr" className="tnum">
+                  INV-0042
+                </span>{' '}
+                · العميلة نورة
+              </p>
+            </div>
+          </div>
+          <span className="shrink-0 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
+            مدفوع
+          </span>
+        </div>
+        <div className="mt-3 divide-y divide-slate-100 text-[12px]">
+          {lines.map((l) => (
+            <div key={l.n} className="flex items-center justify-between py-1.5">
+              <span className="text-slate-700">
+                {l.n}{' '}
+                <bdi dir="ltr" className="tnum text-slate-400">
+                  ×{l.q}
+                </bdi>
+              </span>
+              <span className="tnum text-slate-600">{l.p}</span>
+            </div>
+          ))}
+        </div>
+        <div className="mt-1 flex items-end justify-between border-t border-dashed border-slate-200 pt-2">
+          <span className="text-[12px] font-semibold text-slate-600">
+            الإجمالي{' '}
+            <span className="text-[10px] font-normal text-slate-400">
+              شامل الضريبة
+            </span>
+          </span>
+          <span className="tnum text-[15px] font-extrabold text-navy">
+            300.00 ر.س
+          </span>
+        </div>
+      </div>
+
+      <div className="mt-2.5 flex items-center gap-3 rounded-xl bg-emerald-50/60 p-2.5">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white text-red-500 shadow-sm">
+          <FileText size={17} />
+        </span>
+        <div className="min-w-0 flex-1">
+          <p
+            dir="ltr"
+            className="tnum truncate text-end text-[12px] font-semibold text-slate-800"
+          >
+            INV-0042.pdf
+          </p>
+          <p className="text-[10px] text-slate-500">
+            أرسلت الفاتورة إلى نورة عبر واتساب
+          </p>
+        </div>
+        <CheckCheck size={15} className="shrink-0 text-blue-500" />
+      </div>
+    </MockShell>
+  );
+}
+
+function RatingsMock() {
+  const dist = [
+    { s: 5, p: 78 },
+    { s: 4, p: 14 },
+    { s: 3, p: 5 },
+    { s: 2, p: 2 },
+    { s: 1, p: 1 },
+  ];
+  const agents = [
+    { n: 'سارة', r: '4.9', grad: 'from-blue-400 to-blue-600' },
+    { n: 'خالد', r: '4.7', grad: 'from-emerald-400 to-emerald-600' },
+  ];
+  return (
+    <MockShell label="تقييم الخدمة">
+      {/* Ticket-close divider + the rating request, as the thread shows it. */}
+      <div className="rounded-xl border border-slate-100 bg-slate-50/60 p-3">
+        <div className="flex items-center gap-2 text-[10px]">
+          <span className="h-px flex-1 bg-slate-200" />
+          <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 font-medium text-slate-500 ring-1 ring-slate-100">
+            <CircleCheck size={11} className="text-emerald-500" /> أغلقت سارة
+            التذكرة
+          </span>
+          <span className="h-px flex-1 bg-slate-200" />
+        </div>
+        <div className="ms-auto mt-2.5 w-fit max-w-[85%] rounded-2xl rounded-tl-sm bg-blue-50 px-3 py-2 text-[12px] leading-relaxed text-slate-700">
+          شكرا لتواصلك معنا 🌷 كيف تقيم الخدمة التي حصلت عليها؟
+        </div>
+        <div className="me-auto mt-2 w-fit rounded-2xl rounded-tr-sm bg-white px-3 py-1.5 text-[12px] text-slate-800 shadow-sm ring-1 ring-slate-100">
+          ⭐⭐⭐⭐⭐ ممتاز
+        </div>
+      </div>
+
+      <div className="mt-3 flex items-center gap-4 rounded-xl border border-slate-100 p-3">
+        <div className="shrink-0 text-center">
+          <p className="tnum text-3xl font-extrabold leading-none text-navy">
+            4.8
+          </p>
+          <div className="mt-1.5 flex justify-center gap-0.5 text-amber-400">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <Star key={i} size={11} fill="currentColor" strokeWidth={0} />
+            ))}
+          </div>
+          <p className="tnum mt-1 text-[10px] text-slate-400">312 تقييم</p>
+        </div>
+        <div className="flex-1 space-y-1">
+          {dist.map((d) => (
+            <div key={d.s} className="flex items-center gap-2 text-[10px]">
+              <span className="tnum w-2 text-slate-500">{d.s}</span>
+              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-100">
+                <div
+                  className="h-full rounded-full bg-amber-400"
+                  style={{ width: `${d.p}%` }}
+                />
+              </div>
+              <span className="tnum w-7 text-slate-400">{d.p}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-2.5 grid grid-cols-2 gap-2">
+        {agents.map((a) => (
+          <div
+            key={a.n}
+            className="flex items-center gap-2 rounded-lg border border-slate-100 bg-slate-50/60 px-2.5 py-2"
+          >
+            <span
+              className={cn(
+                'grid h-6 w-6 place-items-center rounded-full bg-gradient-to-br text-[10px] font-bold text-white',
+                a.grad,
+              )}
+            >
+              {a.n[0]}
+            </span>
+            <span className="flex-1 text-[12px] font-semibold text-slate-700">
+              {a.n}
+            </span>
+            <span className="tnum inline-flex items-center gap-0.5 text-[12px] font-bold text-slate-900">
+              <Star
+                size={11}
+                className="text-amber-400"
+                fill="currentColor"
+                strokeWidth={0}
+              />
+              {a.r}
+            </span>
+          </div>
+        ))}
+      </div>
+    </MockShell>
+  );
+}
+
 /* -------------------------------------------------------------- section -- */
 
 export function Showcase() {
@@ -337,23 +543,24 @@ export function Showcase() {
         eyebrow="صندوق وارد موحد"
         eyebrowIcon={Inbox}
         title={<>كل محادثات فريقك في شاشة واحدة</>}
-        description="اجمع أرقام واتساب لمتجرك في صندوق واحد، ووزع المحادثات على فريقك مع صلاحيات دقيقة لكل دور."
+        description="اجمع أرقام واتساب لمتجرك في صندوق واحد، ووزع المحادثات على فريقك، وحدد لكل موظف الأرقام التي يصل إليها."
         bullets={[
           'توزيع المحادثات على الموظفين',
-          'صلاحيات وأدوار مخصصة',
+          'صلاحيات لكل دور ولكل رقم',
           'ردود سريعة ووسوم للتنظيم',
         ]}
         mock={<InboxMock />}
       />
       <FeatureBlock
         reverse
-        eyebrow="الحملات والقوالب"
+        eyebrow="الحملات والبث"
         eyebrowIcon={Megaphone}
         title={<>أرسل حملات واتساب لآلاف العملاء</>}
-        description="صمم حملاتك عبر قوالب واتساب المعتمدة، وأرسلها لقوائم منظمة، وتابع حالة الإرسال لحظيا."
+        description="أرسل حملاتك عبر قوالب واتساب المعتمدة أو من واتساب ويب بدون قوالب، وخاطب كل عميل باسمه، وتابع حالة الإرسال لحظيا."
         bullets={[
-          'قوالب واتساب معتمدة',
-          'قوائم إرسال منظمة',
+          'قوالب معتمدة بمتغيرات مثل اسم العميل',
+          'حملات واتساب ويب بفواصل زمنية بين الرسائل',
+          'بث للمجموعات ونشر في قنوات واتساب',
           'متابعة حالة كل رسالة',
         ]}
         mock={<CampaignMock />}
@@ -369,6 +576,33 @@ export function Showcase() {
           'متابعة مبيعات الفريق',
         ]}
         mock={<DealsMock />}
+      />
+      <FeatureBlock
+        reverse
+        eyebrow="الطلبات والفواتير"
+        eyebrowIcon={Receipt}
+        title={<>من المحادثة إلى الفاتورة، في مكان واحد</>}
+        description="أنشئ الطلب من داخل المحادثة، وأرسل عرض السعر لعميلك، وسجل الدفعة، ثم أرسل الفاتورة على واتساب بضغطة — حتى من تطبيق الجوال."
+        bullets={[
+          'عروض أسعار وفواتير PDF بشعار متجرك',
+          'تسجيل الدفعات ومتابعة حالة كل طلب',
+          'إرسال الفاتورة على واتساب مباشرة',
+          'الموظف الذكي يجهز لك مسودة الطلب',
+        ]}
+        mock={<InvoiceMock />}
+      />
+      <FeatureBlock
+        eyebrow="خدمة العملاء"
+        eyebrowIcon={Headset}
+        title={<>حول كل محادثة إلى تذكرة، واعرف رأي عملائك</>}
+        description="افتح المحادثة كتذكرة وأغلقها عند حل الطلب، فيصل عميلك طلب تقييم من 1 إلى 5 نجوم — ويحسب التقييم للموظف الذي خدمه."
+        bullets={[
+          'فتح وإغلاق المحادثات كتذاكر',
+          'تقييم بالنجوم بعد كل إغلاق',
+          'تقرير تقييمات لكل موظف',
+          'إغلاق تلقائي وتنبيه عند تأخر الرد',
+        ]}
+        mock={<RatingsMock />}
       />
     </section>
   );

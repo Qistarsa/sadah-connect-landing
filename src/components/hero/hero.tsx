@@ -74,8 +74,8 @@ export function Hero() {
             variants={blurFadeUp}
             className="mt-6 max-w-2xl text-lg leading-relaxed text-foreground-muted md:text-xl"
           >
-            سادة كونكت تجمع واتساب، الموظف الذكي، الحملات، الصفقات والتقارير في
-            مكان واحد — لتبيع أكثر، وترد أسرع.
+            سادة كونكت تجمع واتساب، الموظف الذكي، الحملات، الصفقات، الطلبات
+            والفواتير في مكان واحد — لتبيع أكثر، وترد أسرع.
           </motion.p>
 
           <motion.div variants={scaleUp} className="mt-9">

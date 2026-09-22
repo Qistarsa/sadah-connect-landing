@@ -10,6 +10,13 @@ import {
   CheckCheck,
   Sparkles,
   ArrowLeft,
+  Search,
+  ShoppingBag,
+  Handshake,
+  Receipt,
+  ListTodo,
+  CalendarClock,
+  Tag,
   type LucideIcon,
 } from 'lucide-react';
 import { Container } from '@/components/ui/container';
@@ -35,6 +42,17 @@ const BULLETS: Array<{ icon: LucideIcon; title: string; desc: string }> = [
     title: 'يسلم المحادثة لفريقك عند الحاجة',
     desc: 'عندما يكتشف أن العميل يريد التحدث مع موظف، يحول المحادثة مباشرة إلى فريقك.',
   },
+];
+
+// Mirrors the agent's real tool set (backend src/ai-agent/tools).
+const ACTIONS: Array<{ icon: LucideIcon; label: string }> = [
+  { icon: Search, label: 'يبحث في منتجاتك' },
+  { icon: ShoppingBag, label: 'يرسل الكتالوج' },
+  { icon: Handshake, label: 'ينشئ صفقة' },
+  { icon: Receipt, label: 'يجهز مسودة طلب' },
+  { icon: ListTodo, label: 'يضيف مهمة أو تذكير' },
+  { icon: CalendarClock, label: 'يجدول متابعة' },
+  { icon: Tag, label: 'يصنف العميل بوسوم' },
 ];
 
 function Waveform({ active }: { active: boolean }) {
@@ -238,6 +256,29 @@ export function AiAgent() {
                 </motion.div>
               ))}
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={defaultViewport}
+              transition={{ duration: 0.6, ease, delay: BULLETS.length * 0.08 }}
+              className="mt-8"
+            >
+              <p className="text-sm font-bold text-navy">
+                ولا يكتفي بالرد، بل ينفذ أيضا:
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {ACTIONS.map((a) => (
+                  <span
+                    key={a.label}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-[13px] font-medium text-foreground-muted shadow-sm ring-1 ring-primary-100"
+                  >
+                    <a.icon size={14} className="text-primary-500" />
+                    {a.label}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
 
             <a
               href={SITE.signup}

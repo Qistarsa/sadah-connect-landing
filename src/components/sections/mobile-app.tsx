@@ -8,6 +8,7 @@ import {
   Zap,
   CheckCheck,
   SendHorizontal,
+  Receipt,
 } from 'lucide-react';
 import { Container } from '@/components/ui/container';
 import { SITE } from '@/lib/site';
@@ -16,6 +17,7 @@ import { ease, defaultViewport } from '@/lib/motion';
 const PERKS: Array<{ icon: typeof Bell; text: string }> = [
   { icon: MessageCircle, text: 'رد على عملائك من أي مكان' },
   { icon: Bell, text: 'إشعارات فورية بكل رسالة جديدة' },
+  { icon: Receipt, text: 'أرسل فاتورة لعميلك من داخل المحادثة' },
   { icon: Zap, text: 'متجرك في جيبك — طوال الوقت' },
 ];
 

@@ -33,6 +33,13 @@ const LEFT: Feature[] = [
       'وفر وقت فريقك في الأسئلة المتكررة.',
     ],
   },
+  {
+    title: 'ربط API للمطورين',
+    bullets: [
+      'أرسل قوالب واتساب من متجرك أو نظامك.',
+      'مفاتيح API بصلاحيات محددة لكل تكامل.',
+    ],
+  },
 ];
 
 const CENTER: Feature[] = [
@@ -49,8 +56,8 @@ const CENTER: Feature[] = [
   {
     title: 'تقارير ولوحات',
     bullets: [
-      'تابع المحادثات والصفقات والفريق لحظيا.',
-      'لوحات وأرقام واضحة لاتخاذ القرار.',
+      'تقارير المحادثات والعملاء والصفقات والمنتجات والفريق.',
+      'تقييمات العملاء وأداء كل موظف.',
     ],
     img: '/features/reports.png',
     imgPos: 'side',
@@ -68,8 +75,8 @@ const RIGHT: Feature[] = [
     title: 'أرقام واتساب متعددة',
     bullets: [
       'اربط أكثر من رقم في صندوق واحد.',
-      'QR لواتساب ويب أو واتساب API الرسمي.',
       'وزع المحادثات على فريقك تلقائيا.',
+      'تنبيه فوري إذا انقطع ربط أي رقم.',
     ],
     img: '/features/whatsapp-numbers.png',
     imgPos: 'below',
@@ -87,7 +94,7 @@ const RIGHT: Feature[] = [
     title: 'صلاحيات وأدوار',
     bullets: [
       'أدوار وصلاحيات دقيقة لكل موظف.',
-      'تحكم بما يصل إليه كل عضو في الفريق.',
+      'حدد لكل موظف أرقام واتساب التي يصل إليها.',
     ],
     img: '/features/roles.png',
     imgPos: 'below',
@@ -183,21 +190,33 @@ export function Features() {
       <div className="flex flex-col gap-2 lg:flex-row lg:items-stretch">
         <div className="flex min-w-0 flex-col gap-2 lg:grow-[27] lg:basis-0">
           {LEFT.map((f, i) => (
-            <Reveal key={f.title} delay={i * 0.05} className="lg:flex-1">
+            <Reveal
+              key={f.title}
+              delay={i * 0.05}
+              className={f.img ? 'lg:flex-1' : undefined}
+            >
               <FeatureCard feature={f} />
             </Reveal>
           ))}
         </div>
         <div className="flex min-w-0 flex-col gap-2 lg:grow-[44] lg:basis-0">
           {CENTER.map((f, i) => (
-            <Reveal key={f.title} delay={i * 0.05} className="lg:flex-1">
+            <Reveal
+              key={f.title}
+              delay={i * 0.05}
+              className={f.img ? 'lg:flex-1' : undefined}
+            >
               <FeatureCard feature={f} />
             </Reveal>
           ))}
         </div>
         <div className="flex min-w-0 flex-col gap-2 lg:grow-[27] lg:basis-0">
           {RIGHT.map((f, i) => (
-            <Reveal key={f.title} delay={i * 0.05} className="lg:flex-1">
+            <Reveal
+              key={f.title}
+              delay={i * 0.05}
+              className={f.img ? 'lg:flex-1' : undefined}
+            >
               <FeatureCard feature={f} />
             </Reveal>
           ))}

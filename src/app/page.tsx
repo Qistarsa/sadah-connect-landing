@@ -5,6 +5,7 @@ import { Statement } from '@/components/sections/statement';
 import { Showcase } from '@/components/sections/showcase';
 import { AiAgent } from '@/components/sections/ai-agent';
 import { Features } from '@/components/sections/features';
+import { Connect } from '@/components/sections/connect';
 import { Pricing } from '@/components/sections/pricing';
 import { Faq } from '@/components/sections/faq';
 import { MobileApp } from '@/components/sections/mobile-app';
@@ -22,6 +23,7 @@ export default function Page() {
         <Showcase />
         <AiAgent />
         <Features />
+        <Connect />
         <Pricing />
         <Faq />
         <MobileApp />
