@@ -1,11 +1,14 @@
 import type { NextConfig } from 'next';
 
 /**
- * Uploads origin — the NestJS backend on the VPS, which serves `/uploads`
- * behind nginx with 1-year immutable cache headers.
+ * Uploads origins — legacy `/uploads` on the NestJS backend, and the R2 media
+ * bucket that now holds every file. Both serve 1-year immutable cache headers.
  */
 const apiOrigin = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000';
 const { protocol, hostname, port } = new URL(apiOrigin);
+const mediaHost = new URL(
+  process.env.NEXT_PUBLIC_MEDIA_URL ?? 'https://connect.sadah-cdn.link',
+).hostname;
 
 const nextConfig: NextConfig = {
   images: {
@@ -30,6 +33,7 @@ const nextConfig: NextConfig = {
         hostname: 'connect-api.sadah.io',
         pathname: '/uploads/**',
       },
+      { protocol: 'https', hostname: mediaHost, pathname: '/**' },
     ],
   },
 
